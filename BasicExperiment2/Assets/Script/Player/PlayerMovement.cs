@@ -8,9 +8,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform transformComponent;
     [SerializeField] private PlayerInputScript PlayerInput;
 
+
     [SerializeField] float movementSpeed = 1f;
     [SerializeField] float jumpForce = 100f;
-    bool jump = true;
+
+    bool isGrounded;
 
     private void Awake()
     {
@@ -31,11 +33,12 @@ public class PlayerMovement : MonoBehaviour
             transformComponent.position += transform.right * PlayerInput.horizontalInput * movementSpeed;
         }
 
-        if (Input.GetKeyDown("space"))
+        if (PlayerInput.jump==true)
         {
-            rigidbodyComponent.AddForce(0, jumpForce, 0, ForceMode.VelocityChange);
+            rigidbodyComponent.AddForce(Vector3.up * jumpForce , ForceMode.VelocityChange);
 
-            jump = false;
+            PlayerInput.jump = false;
+            PlayerInput.isGrounded = false;
         }
         
     }
