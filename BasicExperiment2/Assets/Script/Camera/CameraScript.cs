@@ -6,18 +6,25 @@ public class CameraScript : MonoBehaviour
 {
 
     [SerializeField] PlayerInputScript playerInput;
-    [SerializeField] Transform cameraTransform;
-    private float mouseSensivity;
+    [SerializeField] Transform playerTransform;
     
+
+    private float xRotation = 0f;
+
     void Start()
     {
         
     }
 
     
-    void FixedUpdate()
+    void Update()
     {
-        cameraTransform.localRotation = Quaternion.Euler(playerInput.mouseTurn.x * mouseSensivity, 0, 0);
+
+        xRotation += playerInput.mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerTransform.Rotate(Vector3.up * playerInput.mouseX);
 
     }
 }

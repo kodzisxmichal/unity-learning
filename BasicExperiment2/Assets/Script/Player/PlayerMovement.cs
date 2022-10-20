@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform transformComponent;
     [SerializeField] private PlayerInputScript PlayerInput;
 
-    [SerializeField] float movementSpeed = 10f;
-    [SerializeField] float mouseSensivity = 1f;
+    [SerializeField] float movementSpeed = 1f;
+    [SerializeField] float jumpForce = 100f;
+    bool jump = true;
 
     private void Awake()
     {
@@ -22,15 +23,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (PlayerInput.verticalInput != 0)
         {
-            transformComponent.position += transform.forward * PlayerInput.verticalInput * movementSpeed * Time.deltaTime;
+            transformComponent.position += transform.forward * PlayerInput.verticalInput * movementSpeed;
         }
 
         if (PlayerInput.horizontalInput != 0)
         {
-            transformComponent.position += transform.right * PlayerInput.horizontalInput * movementSpeed * Time.deltaTime;
+            transformComponent.position += transform.right * PlayerInput.horizontalInput * movementSpeed;
         }
 
-        transform.localRotation = Quaternion.Euler(0, PlayerInput.mouseTurn.y * mouseSensivity, 0);
+        if (Input.GetKeyDown("space"))
+        {
+            rigidbodyComponent.AddForce(0, jumpForce, 0, ForceMode.VelocityChange);
+
+            jump = false;
+        }
         
     }
 }

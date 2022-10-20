@@ -8,7 +8,11 @@ public class PlayerInputScript : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
 
-    public Vector2 mouseTurn;
+    public float mouseY;
+    public float mouseX;
+
+
+    [SerializeField] float mouseSensiviy = 100f;
 
     void Update()
     {
@@ -16,8 +20,8 @@ public class PlayerInputScript : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        mouseTurn.x += Input.GetAxis("Mouse Y");
-        mouseTurn.y += Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y") * mouseSensiviy * Time.deltaTime;
+        mouseX = Input.GetAxis("Mouse X") * mouseSensiviy * Time.deltaTime;
 
     }
 }
