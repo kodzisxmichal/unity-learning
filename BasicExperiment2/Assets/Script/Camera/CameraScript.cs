@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    [SerializeField] PlayerInputScript playerInput;
+    [SerializeField] Transform cameraTransform;
+    private float mouseSensivity;
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
-        
+        cameraTransform.localRotation = Quaternion.Euler(playerInput.mouseTurn.x * mouseSensivity, 0, 0);
+
     }
 }
