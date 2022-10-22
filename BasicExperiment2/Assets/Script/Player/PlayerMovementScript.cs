@@ -26,6 +26,8 @@ public class PlayerMovementScript : MonoBehaviour
     bool grounded;
 
     [SerializeField] private Transform orientation;
+    [SerializeField] private Transform shootingPoint;
+    [SerializeField] private Transform playerCam;
 
     float horizontalInput;
     float verticalInput;
@@ -46,6 +48,9 @@ public class PlayerMovementScript : MonoBehaviour
     {
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+        
+        //shooting point
+        shootingPoint.position = orientation.position + orientation.forward + new Vector3(0, playerHeight/4, 0);
 
         MyInput();
         SpeedControl();

@@ -8,8 +8,10 @@ public class PlayerAttackScript : MonoBehaviour
     [SerializeField] Transform spawnPosition;
     [SerializeField] Transform spawnRotation;
 
-    [SerializeField] private float projectileSpeed = 1f;
+    [SerializeField] private float projectileSpeed = 100f;
     [SerializeField] private KeyCode fireb_key;
+
+    
 
     void Start()
     {
@@ -28,6 +30,5 @@ public class PlayerAttackScript : MonoBehaviour
     private void Fireball()
     {
         Instantiate(fireballPrefab, spawnPosition.position, spawnRotation.rotation);
-        fireballPrefab.GetComponent<Rigidbody>().AddForce(Vector3.forward * projectileSpeed * Time.deltaTime, ForceMode.VelocityChange);
     }
 }
