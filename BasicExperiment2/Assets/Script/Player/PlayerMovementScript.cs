@@ -1,32 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class PlayerMovementTutorial : MonoBehaviour
+public class PlayerMovementScript : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveSpeed;
+    //Movement
+    [SerializeField] private float moveSpeed;
 
-    public float groundDrag;
+    [SerializeField] private float groundDrag;
 
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpCooldown;
+    [SerializeField] private float airMultiplier;
     bool readyToJump;
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
 
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
+    //Keybinds
+    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
 
-    [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
+    //Ground Check
+    [SerializeField] private float playerHeight;
+    [SerializeField] private LayerMask whatIsGround;
     bool grounded;
 
-    public Transform orientation;
+    [SerializeField] private Transform orientation;
 
     float horizontalInput;
     float verticalInput;
