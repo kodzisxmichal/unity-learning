@@ -11,7 +11,7 @@ public class FireballScript : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed * 10f);
+        GetComponent<Rigidbody>().AddForce(transform.forward * projectileSpeed * 5f);
     }
 
     private void OnCollisionEnter(Collision collision)
