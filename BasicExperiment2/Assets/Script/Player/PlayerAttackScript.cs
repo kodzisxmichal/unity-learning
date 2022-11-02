@@ -8,7 +8,6 @@ public class PlayerAttackScript : MonoBehaviour
     [SerializeField] Transform spawnPosition;
     [SerializeField] Transform spawnRotation;
 
-    [SerializeField] private float projectileSpeed = 100f;
     [SerializeField] private KeyCode fireb_key;
 
     
